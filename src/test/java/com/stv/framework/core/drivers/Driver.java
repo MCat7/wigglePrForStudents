@@ -17,10 +17,9 @@ public class Driver {
         return driver;
     }
 
-    private static void setChromeDriver()
-    {
-//        String exePath = "C:\\Chromedriver\\chromedriver.exe";
-//        System.setProperty("webdriver.chrome.driver", exePath);
+    private static void setChromeDriver() {
+        String exePath = "C:\\Chromedriver\\chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", exePath);
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setJavascriptEnabled(true);
         driver = new ChromeDriver(capabilities);
@@ -32,7 +31,7 @@ public class Driver {
 
     private static void setFireFox() {
 
-        String exePath =  "C:\\drivers\\geckodriver.exe";
+        String exePath = "C:\\drivers\\geckodriver.exe";
         System.setProperty("webdriver.gecko.driver", exePath);
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", true);

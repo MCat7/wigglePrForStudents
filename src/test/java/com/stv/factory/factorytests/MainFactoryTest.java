@@ -2,6 +2,7 @@ package com.stv.factory.factorytests;
 
 import com.stv.factory.factorypages.LoginPage;
 import com.stv.factory.factorypages.MainFactoryPage;
+import com.stv.factory.factorypages.RegistrationPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class MainFactoryTest extends BasicFactoryTest {
 
@@ -31,11 +34,14 @@ public class MainFactoryTest extends BasicFactoryTest {
 
     @Test
     public void addNewCustomer() throws InterruptedException {
+        getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         mainFactoryPage.clickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
-        WebElement dynamicElement = (new WebDriverWait(getDriver(), 1)).until(ExpectedConditions.presenceOfElementLocated(By.id("LogOnModel_UserName")));
+        // WebElement dynamicElement = (new WebDriverWait(getDriver(), 1)).until(ExpectedConditions.presenceOfElementLocated(By.id("LogOnModel_UserName")));
         mainFactoryPage.enterNewCustomerEmailAddressField("test@gmail.com");
         mainFactoryPage.clickContinueNewCustomerButton();
-        Thread.sleep(2000);
+        Assert.assertEquals(new RegistrationPage().isRegistrationContainerDisplayed(), true);
+        getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
     }
 }

@@ -21,7 +21,8 @@ public class NewCustomerSteps extends BasicFactoryTest {
     public void myAccountPageLoaded() throws Throwable{
         getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         getDriver().get(START_URL_USA);
-        mainFactoryPage.clickOnTrustButton();
+       // mainFactoryPage.clickOnTrustButton();
+        mainFactoryPage.tryClickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
         Assert.assertEquals(mainFactoryPage.emailAddressFieldDisplayed(), true);
 
@@ -44,6 +45,22 @@ public class NewCustomerSteps extends BasicFactoryTest {
     @Then("going to the registration page")
     public void goingToTheRegistrationPage() {
         Assert.assertEquals(new RegistrationPage().isRegistrationContainerDisplayed(), true);
+
+    }
+
+    @When("the User entered invalid email-address {string}")
+    public void theUserEnteredInvalidEmailAddress(String email_address) {
+        getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        mainFactoryPage.enterNewCustomerEmailAddressField(email_address);
+    }
+
+    @Then("see the emailErrorMessage")
+    public void seeTheEmailErrorMessage() {
+        Assert.assertEquals(mainFactoryPage.emailErrorMessageDisplayed(), true);
+    }
+
+    @Given("close Browser")
+    public void closeBrowser() {
         Driver.getDriver().quit();
     }
 }

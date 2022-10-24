@@ -1,8 +1,11 @@
 package com.stv.factory.factorypages;
 
 import com.stv.framework.core.drivers.Driver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static com.stv.framework.core.lib.WigglePageURLs.START_URL_USA;
 
 public class MainFactoryPage extends FactoryPage {
 
@@ -20,16 +23,25 @@ public class MainFactoryPage extends FactoryPage {
     @FindBy(id = "DualRegisterEmailModel_Email-error")
     private WebElement emailErrorMessage;
 
-    public boolean isAccountLinkDisplayed(){
+    public boolean isAccountLinkDisplayed() {
         return accountLink.isDisplayed();
     }
 
-    public void clickOnAccountLink(){
+    public void clickOnAccountLink() {
         accountLink.click();
     }
 
-    public void clickOnTrustButton(){
+    public void clickOnTrustButton() {
         trustButton.click();
+    }
+
+    public void tryClickOnTrustButton() {
+        try {
+            trustButton.click();
+        } catch (NoSuchElementException e){
+            Driver.getDriver().get(START_URL_USA);
+        }
+
     }
 
     public void enterNewCustomerEmailAddressField(String s) {
@@ -37,15 +49,16 @@ public class MainFactoryPage extends FactoryPage {
         emailAddressField.sendKeys(s);
     }
 
-    public void clickContinueNewCustomerButton(){
+    public void clickContinueNewCustomerButton() {
         continueNewCustomerButton.click();
     }
 
-    public boolean emailErrorMessageDisplayed(){
-       return emailErrorMessage.isDisplayed();
+    public boolean emailErrorMessageDisplayed() {
+        return emailErrorMessage.isDisplayed();
     }
-    public boolean emailAddressFieldDisplayed(){
-       return emailAddressField.isDisplayed();
+
+    public boolean emailAddressFieldDisplayed() {
+        return emailAddressField.isDisplayed();
     }
 
 

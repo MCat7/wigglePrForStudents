@@ -7,3 +7,17 @@ Feature: add new customer
     And  the User clicks the Continue button
     Then going to the registration page
 
+  Scenario Outline: 02 add new customer with invalid email-address
+    Given myAccount page loaded
+    When  the User entered invalid email-address "<email-address>"
+    And  the User clicks the Continue button
+    Then see the emailErrorMessage
+    Examples:
+      | email-address |
+      | test          |
+      | gmail.com     |
+      | @gmail.com    |
+      | 111@gmail     |
+
+  Scenario: End
+  Given close Browser

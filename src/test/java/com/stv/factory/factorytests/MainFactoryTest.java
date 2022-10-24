@@ -3,10 +3,6 @@ package com.stv.factory.factorytests;
 import com.stv.factory.factorypages.LoginPage;
 import com.stv.factory.factorypages.MainFactoryPage;
 import com.stv.factory.factorypages.RegistrationPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -14,9 +10,10 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import static com.stv.framework.core.lib.WigglePageURLs.START_URL_USA;
+import static com.stv.framework.core.lib.WiggleTestEmail.VALID_EMAIL;
+import static com.stv.framework.core.lib.WiggleTestEmail.INVALID_EMAIL;
 
 public class MainFactoryTest extends BasicFactoryTest {
-
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
 
     @Ignore
@@ -39,8 +36,7 @@ public class MainFactoryTest extends BasicFactoryTest {
         getDriver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         mainFactoryPage.clickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
-        // WebElement dynamicElement = (new WebDriverWait(getDriver(), 1)).until(ExpectedConditions.presenceOfElementLocated(By.id("LogOnModel_UserName")));
-        mainFactoryPage.enterNewCustomerEmailAddressField("test@gmail.com");
+        mainFactoryPage.enterNewCustomerEmailAddressField(VALID_EMAIL);
         mainFactoryPage.clickContinueNewCustomerButton();
         Assert.assertEquals(new RegistrationPage().isRegistrationContainerDisplayed(), true);
     }
@@ -49,7 +45,7 @@ public class MainFactoryTest extends BasicFactoryTest {
     public void addNewCustomerInvalidEmail() throws InterruptedException {
         getDriver().get(START_URL_USA);
         mainFactoryPage.clickOnAccountLink();
-        mainFactoryPage.enterNewCustomerEmailAddressField("test");
+        mainFactoryPage.enterNewCustomerEmailAddressField(INVALID_EMAIL);
         mainFactoryPage.clickContinueNewCustomerButton();
         Assert.assertEquals(mainFactoryPage.emailErrorMessageDisplayed(), true);
         getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);

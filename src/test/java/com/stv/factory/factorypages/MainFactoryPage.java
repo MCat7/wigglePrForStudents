@@ -1,5 +1,6 @@
 package com.stv.factory.factorypages;
 
+import com.stv.framework.core.drivers.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,6 +17,8 @@ public class MainFactoryPage extends FactoryPage {
 
     @FindBy(id = "qa-dual-register")
     private WebElement continueNewCustomerButton;
+    @FindBy(id = "DualRegisterEmailModel_Email-error")
+    private WebElement emailErrorMessage;
 
     public boolean isAccountLinkDisplayed(){
         return accountLink.isDisplayed();
@@ -37,4 +40,13 @@ public class MainFactoryPage extends FactoryPage {
     public void clickContinueNewCustomerButton(){
         continueNewCustomerButton.click();
     }
+
+    public boolean emailErrorMessageDisplayed(){
+       return emailErrorMessage.isDisplayed();
+    }
+    public boolean emailAddressFieldDisplayed(){
+       return emailAddressField.isDisplayed();
+    }
+
+
 }

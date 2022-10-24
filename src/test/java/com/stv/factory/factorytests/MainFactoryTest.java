@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.stv.framework.core.lib.WigglePageURLs.START_URL_USA;
+
 public class MainFactoryTest extends BasicFactoryTest {
 
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
@@ -34,14 +36,28 @@ public class MainFactoryTest extends BasicFactoryTest {
 
     @Test
     public void addNewCustomer() throws InterruptedException {
-        getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         mainFactoryPage.clickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
         // WebElement dynamicElement = (new WebDriverWait(getDriver(), 1)).until(ExpectedConditions.presenceOfElementLocated(By.id("LogOnModel_UserName")));
         mainFactoryPage.enterNewCustomerEmailAddressField("test@gmail.com");
         mainFactoryPage.clickContinueNewCustomerButton();
         Assert.assertEquals(new RegistrationPage().isRegistrationContainerDisplayed(), true);
+
+
+    }
+
+    @Test
+    public void addNewCustomerInvalidEmail() throws InterruptedException {
+        getDriver().get(START_URL_USA);
+        mainFactoryPage.clickOnAccountLink();
+        // WebElement dynamicElement = (new WebDriverWait(getDriver(), 1)).until(ExpectedConditions.presenceOfElementLocated(By.id("LogOnModel_UserName")));
+        mainFactoryPage.enterNewCustomerEmailAddressField("test");
+        mainFactoryPage.clickContinueNewCustomerButton();
+
+        Assert.assertEquals(mainFactoryPage.emailErrorMessageDisplayed(), true);
         getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
     }
+
 }

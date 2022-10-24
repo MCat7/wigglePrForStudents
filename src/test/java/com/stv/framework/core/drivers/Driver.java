@@ -18,8 +18,8 @@ public class Driver {
     }
 
     private static void setChromeDriver() {
-        String exePath = "C:\\Chromedriver\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", exePath);
+        //  String exePath = "C:\\Chromedriver\\chromedriver.exe";
+        //   System.setProperty("webdriver.chrome.driver", exePath);
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setJavascriptEnabled(true);
         driver = new ChromeDriver(capabilities);

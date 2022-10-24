@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends FactoryPage {
-    @FindBy(className = "bem-checkout__container")
+    @FindBy(id = "divRegisterFirstName")
     private WebElement registrationContainer;
 
     public boolean isRegistrationContainerDisplayed(){

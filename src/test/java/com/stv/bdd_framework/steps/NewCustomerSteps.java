@@ -17,11 +17,12 @@ import static com.stv.framework.core.lib.WigglePageURLs.START_URL_USA;
 
 public class NewCustomerSteps extends BasicFactoryTest {
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
+
     @Given("^myAccount page loaded$")
-    public void myAccountPageLoaded() throws Throwable{
+    public void myAccountPageLoaded() throws Throwable {
         getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         getDriver().get(START_URL_USA);
-       // mainFactoryPage.clickOnTrustButton();
+        // mainFactoryPage.clickOnTrustButton();
         mainFactoryPage.tryClickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
         Assert.assertEquals(mainFactoryPage.emailAddressFieldDisplayed(), true);
@@ -64,3 +65,5 @@ public class NewCustomerSteps extends BasicFactoryTest {
         Driver.getDriver().quit();
     }
 }
+
+

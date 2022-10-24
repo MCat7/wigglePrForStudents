@@ -23,6 +23,9 @@ public class MainFactoryPage extends FactoryPage {
     @FindBy(id = "DualRegisterEmailModel_Email-error")
     private WebElement emailErrorMessage;
 
+    @FindBy(className = "bem-megamenu__head-container")
+    private WebElement indexPage;
+
     public boolean isAccountLinkDisplayed() {
         return accountLink.isDisplayed();
     }
@@ -38,7 +41,7 @@ public class MainFactoryPage extends FactoryPage {
     public void tryClickOnTrustButton() {
         try {
             trustButton.click();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             Driver.getDriver().get(START_URL_USA);
         }
 
@@ -61,5 +64,7 @@ public class MainFactoryPage extends FactoryPage {
         return emailAddressField.isDisplayed();
     }
 
-
+    public boolean indexPageLoaded() {
+        return indexPage.isDisplayed();
+    }
 }

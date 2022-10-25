@@ -1,6 +1,7 @@
 package com.stv.factory.factorypages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class GlovesPage extends FactoryPage {
@@ -10,6 +11,30 @@ public class GlovesPage extends FactoryPage {
     @FindBy(xpath = "//div[@data-position='1']")
     private WebElement firstGloves;
 
+    @FindBy(xpath = "//i[@class='icon-right-open']")
+    private WebElement imageScrollRightButton;
+
+    @FindBy(name = "quantityMultiplier")
+    private WebElement quantityMultiplier;
+
+    @FindBy(id = "quickBuyButton")
+    private WebElement add_to_basketButton;
+
+    @FindBy(xpath = "//span[@class='validation-message'][contains(text(),'Please select a size')]")
+    private WebElement errorGloveSizeMessage;
+
+    // @FindBy(xpath = "//a[@class='bem-sku-selector__option-prompt']")
+    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[4]/a")
+    private WebElement sizeSelect;
+
+    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[4]/div/ul/li[1]")
+    private WebElement sizeSmall;
+
+    @FindBy(id = "view-basket")
+    private WebElement viewBasketLink;
+
+    @FindBy(name = "txtQty[0]")
+    private WebElement quantityTuBuy;
 
     public boolean isGlovesPageDisplayed() {
         return h1TitleContainer.isDisplayed();
@@ -17,5 +42,35 @@ public class GlovesPage extends FactoryPage {
 
     public void clickOnFirstGloves() {
         firstGloves.click();
+    }
+
+    public void clickImageScrollRightButton() {
+        imageScrollRightButton.click();
+    }
+
+    public void changeQuantityMultiplier(String q) {
+        quantityMultiplier.clear();
+        quantityMultiplier.sendKeys(q);
+    }
+
+    public void clickAdd_to_basketButton() {
+        add_to_basketButton.click();
+    }
+
+    public boolean errorGloveSizeMessageDisplayed() {
+        return errorGloveSizeMessage.isDisplayed();
+    }
+
+    public void selectSmallSize() {
+        sizeSelect.click();
+        sizeSmall.click();
+    }
+
+    public void clickViewBasketLink(){
+        viewBasketLink.click();
+    }
+
+    public boolean checkQuantityToBuy(String q){
+      return quantityTuBuy.getAttribute("value").equals(q);
     }
 }

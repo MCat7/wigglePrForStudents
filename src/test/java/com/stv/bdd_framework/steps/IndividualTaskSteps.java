@@ -45,4 +45,39 @@ public class IndividualTaskSteps extends BasicFactoryTest {
     public void clickOnTheFirstGloves() {
         glovesPage.clickOnFirstGloves();
     }
+
+    @And("see the following image")
+    public void seeTheFollowingImage() {
+        glovesPage.clickImageScrollRightButton();
+    }
+
+    @And("change the quantity of products to {string}")
+    public void changeTheNumberOfProductsTo(String arg0) {
+        glovesPage.changeQuantityMultiplier(arg0);
+    }
+
+    @And("click Add_To_Basket button")
+    public void clickAdd_To_BasketButton() {
+        glovesPage.clickAdd_to_basketButton();
+    }
+
+    @When("we see a message about the need to select a size")
+    public void weSeeAMessageAboutTheNeedToSelectASize() {
+        Assert.assertEquals(glovesPage.errorGloveSizeMessageDisplayed(), true);
+    }
+
+    @Then("select Small size")
+    public void selectSmallSize() {
+        glovesPage.selectSmallSize();
+    }
+
+    @And("click View full Basket")
+    public void clickViewFullBasket() {
+        glovesPage.clickViewBasketLink();
+    }
+
+    @When("check the quantity of ordered gloves {string}")
+    public void checkTheNumberOfOrderedGloves(String arg0) {
+        Assert.assertEquals(glovesPage.checkQuantityToBuy(arg0), true);
+    }
 }

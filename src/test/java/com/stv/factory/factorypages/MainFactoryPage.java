@@ -63,11 +63,9 @@ public class MainFactoryPage extends FactoryPage {
         } catch (NoSuchElementException e) {
             Driver.getDriver().get(START_URL_USA);
         }
-
     }
 
     public void enterNewCustomerEmailAddressField(String s) {
-
         emailAddressField.sendKeys(s);
     }
 

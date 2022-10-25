@@ -15,6 +15,25 @@ public class MainFactoryPage extends FactoryPage {
     @FindBy(xpath = "//button[contains(text(),'Accept All Cookies')]")
     private WebElement trustButton;
 
+    @FindBy(xpath = "//a[@data-ga-label='Cycle']")
+    private WebElement menuItemCycle;
+    @FindBy(xpath = "//a[@data-ga-label='Cycle | Clothing']")
+    private WebElement menuItemApparel;
+    @FindBy(xpath = "//a[@data-ga-label='Cycle | Clothing | Gloves']")
+    private WebElement menuItemGloves;
+
+    public WebElement getMenuItemCycle() {
+        return menuItemCycle;
+    }
+
+    public WebElement getMenuItemApparel() {
+        return menuItemApparel;
+    }
+
+    public WebElement getMenuItemGloves() {
+        return menuItemGloves;
+    }
+
     @FindBy(id = "DualRegisterEmailModel_Email")
     private WebElement emailAddressField;
 

@@ -39,7 +39,7 @@ public class IndividualTaskSteps extends BasicFactoryTest {
 
     @When("GlovesPage loaded")
     public void glovesPageLoaded() {
-        Assert.assertEquals(glovesPage.isGlovesPageDisplayed(), true);
+        Assert.assertTrue(glovesPage.isGlovesPageDisplayed());
     }
 
     @Then("click on the first gloves")
@@ -64,7 +64,7 @@ public class IndividualTaskSteps extends BasicFactoryTest {
 
     @When("we see a message about the need to select a size")
     public void weSeeAMessageAboutTheNeedToSelectASize() {
-        Assert.assertEquals(glovesPage.errorGloveSizeMessageDisplayed(), true);
+        Assert.assertTrue(glovesPage.errorGloveSizeMessageDisplayed());
     }
 
     @Then("select Small size")
@@ -79,6 +79,6 @@ public class IndividualTaskSteps extends BasicFactoryTest {
 
     @When("check the quantity of ordered gloves {string}")
     public void checkTheNumberOfOrderedGloves(String arg0) {
-        Assert.assertEquals(glovesPage.checkQuantityToBuy(arg0), true);
+        Assert.assertTrue(glovesPage.checkQuantityToBuy(arg0));
     }
 }

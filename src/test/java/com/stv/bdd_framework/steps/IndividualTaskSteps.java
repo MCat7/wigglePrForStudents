@@ -23,6 +23,7 @@ public class IndividualTaskSteps extends BasicFactoryTest {
     public void indexPageLoaded() {
         getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         getDriver().get(START_URL_USA);
+        getDriver().manage().window().maximize();
         mainFactoryPage.tryClickOnTrustButton();
         Assert.assertEquals(mainFactoryPage.indexPageLoaded(), true);
     }

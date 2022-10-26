@@ -7,7 +7,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
@@ -25,7 +24,7 @@ public class IndividualTaskSteps extends BasicFactoryTest {
         getDriver().get(START_URL_USA);
         getDriver().manage().window().maximize();
         mainFactoryPage.tryClickOnTrustButton();
-        Assert.assertEquals(mainFactoryPage.indexPageLoaded(), true);
+        Assert.assertTrue(mainFactoryPage.indexPageLoaded());
     }
 
     @And("go to the menu item Cycle->Apparel->Gloves")
@@ -78,7 +77,7 @@ public class IndividualTaskSteps extends BasicFactoryTest {
     }
 
     @When("check the quantity of ordered gloves {string}")
-    public void checkTheNumberOfOrderedGloves(String arg0) {
-        Assert.assertTrue(glovesPage.checkQuantityToBuy(arg0));
+    public void checkTheQuantityOfOrderedGloves(String quantity) {
+        Assert.assertTrue(glovesPage.checkQuantityToBuy(quantity));
     }
 }

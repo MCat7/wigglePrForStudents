@@ -1,6 +1,6 @@
 Feature: individual task 5
 
-  Scenario Outline: 01 buying gloves
+  Scenario Outline: 01. Buying gloves
     Given IndexPage loaded
     And go to the menu item Cycle->Apparel->Gloves
     When GlovesPage loaded

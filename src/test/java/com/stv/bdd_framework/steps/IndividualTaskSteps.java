@@ -3,10 +3,13 @@ package com.stv.bdd_framework.steps;
 import com.stv.factory.factorypages.GlovesPage;
 import com.stv.factory.factorypages.MainFactoryPage;
 import com.stv.factory.factorytests.BasicFactoryTest;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
@@ -20,9 +23,6 @@ public class IndividualTaskSteps extends BasicFactoryTest {
 
     @Given("IndexPage loaded")
     public void indexPageLoaded() {
-        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        getDriver().get(START_URL_USA);
-        getDriver().manage().window().maximize();
         mainFactoryPage.tryClickOnTrustButton();
         Assert.assertTrue(mainFactoryPage.indexPageLoaded());
     }
@@ -79,5 +79,19 @@ public class IndividualTaskSteps extends BasicFactoryTest {
     @When("check the quantity of ordered gloves {string}")
     public void checkTheQuantityOfOrderedGloves(String quantity) {
         Assert.assertTrue(glovesPage.checkQuantityToBuy(quantity));
+    }
+
+    @Before
+    public void start() {
+        WebDriver driver = getDriver();
+        driver.get(START_URL_USA);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+    }
+
+    @After
+    public void theEnd() {
+        getDriver().quit();
+        setDriver(null);
     }
 }

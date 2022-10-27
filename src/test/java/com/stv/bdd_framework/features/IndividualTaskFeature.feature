@@ -14,7 +14,6 @@ Feature: individual task 5
     And click Add_To_Basket button
     And click View full Basket
     When check the quantity of ordered gloves "<quantity>"
-    Then close Browser
 
     Examples:
       | quantity |

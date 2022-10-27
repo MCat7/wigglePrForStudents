@@ -1,7 +1,6 @@
 package com.stv.factory.factorypages;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class GlovesPage extends FactoryPage {
@@ -23,11 +22,10 @@ public class GlovesPage extends FactoryPage {
     @FindBy(xpath = "//span[@class='validation-message'][contains(text(),'Please select a size')]")
     private WebElement errorGloveSizeMessage;
 
-    // @FindBy(xpath = "//a[@class='bem-sku-selector__option-prompt']")
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[4]/a")
+    @FindBy(xpath = "(//div[contains(@class,'js-size-selections')])[2]")
     private WebElement sizeSelect;
 
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[4]/div/ul/li[1]")
+    @FindBy(xpath = "//li[@for='5360659573']")
     private WebElement sizeSmall;
 
     @FindBy(id = "view-basket")
@@ -66,11 +64,11 @@ public class GlovesPage extends FactoryPage {
         sizeSmall.click();
     }
 
-    public void clickViewBasketLink(){
+    public void clickViewBasketLink() {
         viewBasketLink.click();
     }
 
-    public boolean checkQuantityToBuy(String q){
-      return quantityTuBuy.getAttribute("value").equals(q);
+    public boolean checkQuantityToBuy(String q) {
+        return quantityTuBuy.getAttribute("value").equals(q);
     }
 }

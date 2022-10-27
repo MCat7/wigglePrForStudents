@@ -8,6 +8,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class Driver {
     private static WebDriver driver;
 
+    public static void setDriver(WebDriver driver) {
+        Driver.driver = driver;
+    }
+
+
     public static WebDriver getDriver() {
 
         if (driver == null) {

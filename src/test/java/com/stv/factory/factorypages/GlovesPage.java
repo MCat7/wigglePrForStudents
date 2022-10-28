@@ -25,7 +25,7 @@ public class GlovesPage extends FactoryPage {
     @FindBy(xpath = "(//div[contains(@class,'js-size-selections')])[2]")
     private WebElement sizeSelect;
 
-    @FindBy(xpath = "//li[@for='5360659573']")
+    @FindBy(xpath = "//li[@title='Small']")
     private WebElement sizeSmall;
 
     @FindBy(id = "view-basket")
